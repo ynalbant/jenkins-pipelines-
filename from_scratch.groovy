@@ -37,7 +37,7 @@ properties([
 		"""
 	}
 	stage("Restart  web server"){
-		sh "ssh centos@dev1.ayyildizrug.com                 sudo systemctl restart httpd "
+		sh "ssh centos@${ENVIR}                sudo systemctl restart httpd "
     }
 	stage("Slack"){
 		slackSend color: '#BADA55', message: 'Hello, World!'
