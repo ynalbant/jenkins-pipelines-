@@ -15,22 +15,22 @@ properties([
     }
    stage("Install Prerequisites"){
 		sh """
-		ssh centos@jenkins_worker1.ayyildizrug.com                 sudo yum install httpd -y
+		ssh centos@dev1.ayyildizrug.com                 sudo yum install httpd -y
 	
 		"""
     }
 
 	stage("Copy Artifacts"){
 		sh """
-		scp -r *  centos@jenkins_worker1.ayyildizrug.com:/tmp
-		ssh centos@jenkins_worker1.ayyildizrug.com                 sudo cp -r /tmp/index.html /var/www/html/
-		ssh centos@jenkins_worker1.ayyildizrug.com                 sudo cp -r /tmp/style.css /var/www/html/
-		ssh centos@jenkins_worker1.ayyildizrug.com				   sudo chown centos:centos /var/www/html/
-		ssh centos@jenkins_worker1.ayyildizrug.com				   sudo chmod 777 /var/www/html/*
+		scp -r *  centos@dev1.ayyildizrug.com:/tmp
+		ssh centos@dev1.ayyildizrug.com                 sudo cp -r /tmp/index.html /var/www/html/
+		ssh centos@dev1.ayyildizrug.com                 sudo cp -r /tmp/style.css /var/www/html/
+		ssh centos@dev1.ayyildizrug.com				   sudo chown centos:centos /var/www/html/
+		ssh centos@dev1.ayyildizrug.com				   sudo chmod 777 /var/www/html/*
 		"""
 	}
 	stage("Restart  web server"){
-		sh "ssh centos@jenkins_worker1.ayyildizrug.com                 sudo systemctl restart httpd "
+		sh "ssh centos@dev1.ayyildizrug.com                 sudo systemctl restart httpd "
     }
 	stage("Slack"){
 		slackSend color: '#BADA55', message: 'Hello, World!'
