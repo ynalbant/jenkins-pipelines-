@@ -5,7 +5,14 @@ properties([
 	buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), 
 	
 	// Below line triggers this job every minute 
-	 pipelineTriggers([pollSCM('* * * * * ')])
+	 pipelineTriggers([pollSCM('* * * * * ')]),
+	 parameters([choice(choices: [
+		 'dev1.ayyildizrug.com', 
+		 'qa1.ayyildizrug.com', 
+		 'stage1.ayyildizrug.com', 
+		 'prod1.ayyildizrug.com'], 
+		 description: 'Please choose an environment',
+		  name: 'ENVIR')]), 
 	 ])
 
 
