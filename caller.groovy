@@ -9,7 +9,7 @@ node {
 		echo "hello"
 }
 	stage("Stage4"){
-		build 'Template'
+		build 'Template2'
 }
 	stage("Stage5"){
 		echo "hello"
