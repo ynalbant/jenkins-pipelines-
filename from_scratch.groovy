@@ -18,8 +18,13 @@ properties([
 		  name: 'ENVIR'), 
 
          // Asks for version
-		  choice(choices: 
-			['v0.1', 'v0.2', 'v0.3', 'v0.4', 'v0.5'], 
+		  choice(choices: [
+			  'v0.1',
+		      'v0.2',
+			  'v0.3',
+			  'v0.4',
+			  'v0.5'
+			  ], 
 		description: 'Which version should we deploy?', 
 		name: 'Version')
 	    ])
