@@ -1,4 +1,4 @@
-node {
+node ('linux'){
     properties([
         // Keeps only last 5
         buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')),
