@@ -37,5 +37,17 @@ properties(
 				}
             }
        }
+
+
+       		stage("Tag Image"){
+			timestamps {
+				ws {
+					sh '''
+                       docker tag artemis:${Version} 108879318566.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}					
+                       
+                       	'''
+				}
+			}
+        }
         
 }	
