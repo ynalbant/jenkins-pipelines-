@@ -28,7 +28,7 @@ properties([
 		description: 'Which version should we deploy?', 
 		name: 'Version'),
 
-		
+
 		// Asks for an input
 			string(defaultValue: 'v1', 
 			description: 'Please enter version number', 
@@ -59,9 +59,13 @@ properties([
 		"""
 	}
 	stage("Restart  web server"){
-		sh "ssh centos@${ENVIR}                sudo systemctl restart httpd "
+		ws ("mnt/"){
+		    sh "ssh centos@${ENVIR}                sudo systemctl restart httpd "
+		}
     }
 	stage("Slack"){
-		slackSend color: '#BADA55', message: 'Hello, World!'
+		ws ( "tmp/") {
+			slackSend color: '#BADA55', message: 'Hello, World!'
+		}	
 	}
 }
