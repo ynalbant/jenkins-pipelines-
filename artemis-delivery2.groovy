@@ -77,10 +77,10 @@ properties(
 					try {
 						sh '''
 							#!/bin/bash
-							IMAGES=$(ssh centos@dev1.ayyildizrug.com docker ps -aq) 
+							IMAGES=$(ssh centos@${ENVIR} docker ps -aq) 
 							for i in \$IMAGES; do
-								ssh centos@dev1.ayyildizrug.com docker stop \$i
-								ssh centos@dev1.ayyildizrug.com docker rm \$i
+								ssh centos@${ENVIR} docker stop \$i
+								ssh centos@${ENVIR} docker rm \$i
 							done 
 							'''
 					} catch(e) {
@@ -93,7 +93,7 @@ properties(
 		          timestamps {
 			      ws {
 			 	    sh '''
-					ssh centos@${ENVIR}.ayyildizrug.com docker run -dti -p 5001:5000 108879318566.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}
+					ssh centos@${ENVIR} docker run -dti -p 5001:5000 108879318566.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}
 					'''                                                          
 				}
 			}
