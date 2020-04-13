@@ -63,9 +63,5 @@ properties([
 		    sh "ssh centos@${ENVIR}                sudo systemctl restart httpd "
 		}
     }
-	stage("Slack"){
-	
-			slackSend color: '#BADA55', message: 'Hello, World!'
-			
-	}
+
 }
