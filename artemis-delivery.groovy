@@ -11,7 +11,17 @@ properties(
 				'0.4', 
 				'0.5'], 
 		description: 'Which version of the app should I deploy? ', 
-		name: 'Version')])])
+		name: 'Version'), 
+	choice(choices: 
+	[
+		'dev1.ayyildizrug.com', 
+		'qa1.ayyildizrug.com', 
+		'stage1.ayyildizrug.com', 
+		'prod1.ayyildizrug.com'], 
+	description: 'Please provide an environment to build the application', 
+	name: 'ENVIR')])])
+
+	
 		stage("Stage1"){
 			timestamps {
 				ws {
