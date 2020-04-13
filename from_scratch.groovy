@@ -64,8 +64,8 @@ properties([
 		}
     }
 	stage("Slack"){
-	{
+	
 			slackSend color: '#BADA55', message: 'Hello, World!'
-		}	
+			
 	}
 }
