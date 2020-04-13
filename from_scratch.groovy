@@ -64,7 +64,7 @@ properties([
 		}
     }
 	stage("Slack"){
-		ws ( "tmp/") {
+	{
 			slackSend color: '#BADA55', message: 'Hello, World!'
 		}	
 	}
